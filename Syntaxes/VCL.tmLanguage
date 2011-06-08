@@ -312,7 +312,7 @@
 				</dict>
 				<dict>
 					<key>begin</key>
-					<string>\b(if|elseif)\s*\((.+)\)\s*{</string>
+					<string>\b(if|elseif)\s*\((.+)\)\s*(\{\s*|$)</string>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
@@ -335,7 +335,7 @@
 				</dict>
 				<dict>
 					<key>begin</key>
-					<string>\b(else)\s*{</string>
+					<string>\b(else)\s*(\{\s*|$)</string>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
