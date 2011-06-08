@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>name</key>
+	<string>Varnish</string>
+	<key>uuid</key>
+	<string>1EFC09FD-CAC6-4431-9736-E02E935B9FAB</string>
+</dict>
+</plist>
