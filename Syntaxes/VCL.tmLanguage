@@ -25,36 +25,8 @@
 			<string>keyword.other.vcl.acl</string>
 		</dict>
 		<dict>
-			<key>begin</key>
-			<string>\b(backend)\s+([a-zA-Z0-9_]+)\s*{</string>
-			<key>captures</key>
-			<dict>
-				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>keyword.control.backend.vcl</string>
-				</dict>
-				<key>2</key>
-				<dict>
-					<key>name</key>
-					<string>entity.name.backed.vcl</string>
-				</dict>
-			</dict>
-			<key>end</key>
-			<string>}</string>
-			<key>name</key>
-			<string>meta.backend.vcl</string>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>include</key>
-					<string>#backend-definition</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#quoted-string</string>
-				</dict>
-			</array>
+			<key>include</key>
+			<string>#backend</string>
 		</dict>
 		<dict>
 			<key>begin</key>
@@ -93,12 +65,184 @@
 	</array>
 	<key>repository</key>
 	<dict>
-		<key>backend-definition</key>
+		<key>backend</key>
 		<dict>
-			<key>match</key>
-			<string>\b(host|port)\b</string>
+			<key>begin</key>
+			<string>\b(backend)\s+([a-zA-Z0-9_]+)\s*{</string>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.control.backend.vcl</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>entity.name.backend.vcl</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>}</string>
 			<key>name</key>
-			<string>support.other.backend.vcl</string>
+			<string>meta.backend.vcl</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#backend-subkeys</string>
+				</dict>
+			</array>
+		</dict>
+		<key>backend-probe</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>begin</key>
+					<string>\.(url)\s*=</string>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>support.other.backend.probe.subkey.vcl</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>;</string>
+					<key>name</key>
+					<string>meta.backend.probe.subkeys.string.vcl</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#quoted-string</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>\.(timeout|interval)\s*=</string>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>support.other.backend.probe.subkey.vcl</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>;</string>
+					<key>name</key>
+					<string>meta.backend.subkeys.time.vcl</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#time-spec</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>\.(window|threshold)\s*=</string>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>support.other.backend.probe.subkey.vcl</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>;</string>
+					<key>name</key>
+					<string>meta.backend.subkeys.number.vcl</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#number-spec</string>
+						</dict>
+					</array>
+				</dict>
+			</array>
+		</dict>
+		<key>backend-subkeys</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>begin</key>
+					<string>\.(host|port)\s*=</string>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>support.other.backend.subkey.vcl</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>;</string>
+					<key>name</key>
+					<string>meta.backend.subkeys.string.vcl</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#quoted-string</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>\.(probe)\s*=\s*{</string>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>support.other.backend.probe.vcl</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>}</string>
+					<key>name</key>
+					<string>meta.backend.probe.vcl</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#backend-probe</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>\.(connect_timeout|first_byte_timeout|between_bytes_timeout)\s*=</string>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>support.other.backend.subkey.vcl</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>;</string>
+					<key>name</key>
+					<string>meta.backend.subkeys.time.vcl</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#time-spec</string>
+						</dict>
+					</array>
+				</dict>
+			</array>
 		</dict>
 		<key>comment</key>
 		<dict>
@@ -135,6 +279,18 @@
 			<key>name</key>
 			<string>meta.control.function</string>
 		</dict>
+		<key>number-spec</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>match</key>
+					<string>\d</string>
+					<key>name</key>
+					<string>constant.numeric.vcl</string>
+				</dict>
+			</array>
+		</dict>
 		<key>quoted-string</key>
 		<dict>
 			<key>begin</key>
@@ -150,7 +306,7 @@
 			<array>
 				<dict>
 					<key>match</key>
-					<string>\s(call|hash_data|panic|ban|ban_url|remove|return|rollback|set|synthetic|unset|purge|error)\b</string>
+					<string>\b(call|hash_data|panic|ban|ban_url|remove|return|rollback|set|synthetic|unset|purge|error)\b</string>
 					<key>name</key>
 					<string>keyword.control.vcl.action</string>
 				</dict>
@@ -213,6 +369,18 @@
 				<dict>
 					<key>include</key>
 					<string>#quoted-string</string>
+				</dict>
+			</array>
+		</dict>
+		<key>time-spec</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>match</key>
+					<string>\d+\s*(s|ms)</string>
+					<key>name</key>
+					<string>constant.numeric.time.vcl</string>
 				</dict>
 			</array>
 		</dict>
