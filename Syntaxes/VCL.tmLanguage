@@ -21,81 +21,24 @@
 			<string>#comment</string>
 		</dict>
 		<dict>
-			<key>match</key>
-			<string>\b(acl)\b</string>
-			<key>name</key>
-			<string>keyword.other.vcl.acl</string>
+			<key>include</key>
+			<string>#keyword-acl</string>
 		</dict>
 		<dict>
 			<key>include</key>
-			<string>#backend</string>
+			<string>#keyword-backend</string>
 		</dict>
 		<dict>
-			<key>begin</key>
-			<string>\b(sub)\s+([a-zA-Z0-9_]+)\s*{</string>
-			<key>captures</key>
-			<dict>
-				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>keyword.sub.vcl.action</string>
-				</dict>
-				<key>2</key>
-				<dict>
-					<key>name</key>
-					<string>entity.name.function.vcl</string>
-				</dict>
-			</dict>
-			<key>end</key>
-			<string>}</string>
-			<key>name</key>
-			<string>meta.sub.vcl</string>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>include</key>
-					<string>#sub-body</string>
-				</dict>
-			</array>
+			<key>include</key>
+			<string>#keyword-sub</string>
 		</dict>
 		<dict>
-			<key>match</key>
-			<string>\b(director|probe|import)\b</string>
-			<key>name</key>
-			<string>keyword.other.vcl</string>
+			<key>include</key>
+			<string>#keywords-others</string>
 		</dict>
 	</array>
 	<key>repository</key>
 	<dict>
-		<key>backend</key>
-		<dict>
-			<key>begin</key>
-			<string>\b(backend)\s+([a-zA-Z0-9_]+)\s*{</string>
-			<key>captures</key>
-			<dict>
-				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>keyword.control.backend.vcl</string>
-				</dict>
-				<key>2</key>
-				<dict>
-					<key>name</key>
-					<string>entity.name.backend.vcl</string>
-				</dict>
-			</dict>
-			<key>end</key>
-			<string>}</string>
-			<key>name</key>
-			<string>meta.backend.vcl</string>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>include</key>
-					<string>#backend-subkeys</string>
-				</dict>
-			</array>
-		</dict>
 		<key>backend-probe</key>
 		<dict>
 			<key>patterns</key>
@@ -280,6 +223,93 @@
 			<string>\b(\S+)\((.*)\)</string>
 			<key>name</key>
 			<string>meta.control.function</string>
+		</dict>
+		<key>keyword-acl</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>match</key>
+					<string>\b(acl)\b</string>
+					<key>name</key>
+					<string>keyword.other.vcl.acl</string>
+				</dict>
+			</array>
+		</dict>
+		<key>keyword-backend</key>
+		<dict>
+			<key>begin</key>
+			<string>\b(backend)\s+([a-zA-Z0-9_]+)\s*{</string>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.control.backend.vcl</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>entity.name.backend.vcl</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>}</string>
+			<key>name</key>
+			<string>meta.backend.vcl</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#backend-subkeys</string>
+				</dict>
+			</array>
+		</dict>
+		<key>keyword-sub</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>begin</key>
+					<string>\b(sub)\s+([a-zA-Z0-9_]+)\s*{</string>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.sub.vcl.action</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>entity.name.function.vcl</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>}</string>
+					<key>name</key>
+					<string>meta.sub.vcl</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#sub-body</string>
+						</dict>
+					</array>
+				</dict>
+			</array>
+		</dict>
+		<key>keywords-others</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>match</key>
+					<string>\b(director|probe|import)\b</string>
+					<key>name</key>
+					<string>keyword.other.vcl</string>
+				</dict>
+			</array>
 		</dict>
 		<key>number-spec</key>
 		<dict>
