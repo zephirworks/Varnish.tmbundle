@@ -7,9 +7,9 @@
 		<string>vcl</string>
 	</array>
 	<key>foldingStartMarker</key>
-	<string>/\*\*|\{\s*$</string>
+	<string>^.*\b(backend|sub)\s*(\w+\s*)?(\s*\{[^\}]*)?\s*$</string>
 	<key>foldingStopMarker</key>
-	<string>\*\*/|^\s*\}</string>
+	<string>^\s*\}</string>
 	<key>keyEquivalent</key>
 	<string>^~V</string>
 	<key>name</key>
