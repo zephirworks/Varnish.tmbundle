@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>backend ${1:default} {
+  .host = "${2:127.0.0.1}";
+  .port = "80";
+  .probe = {
+    .url = "${3:/}";
+    .timeout = ${4:50ms};
+    .interval = ${5:1s};
+    .window = 10;
+    .threshold = 8;
+  }
+}
+</string>
+	<key>name</key>
+	<string>backend with probe</string>
+	<key>tabTrigger</key>
+	<string>bp</string>
+	<key>uuid</key>
+	<string>65D0F0B5-C122-418A-A2D5-708F4D1280CF</string>
+</dict>
+</plist>

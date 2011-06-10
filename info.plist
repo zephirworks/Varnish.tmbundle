@@ -4,6 +4,11 @@
 <dict>
 	<key>name</key>
 	<string>Varnish</string>
+	<key>ordering</key>
+	<array>
+		<string>E6D2DCFE-A40D-4BF1-9B43-7E3199CF0066</string>
+		<string>D03975D6-0E30-46EC-9A63-AE75EA409EB9</string>
+	</array>
 	<key>uuid</key>
 	<string>1EFC09FD-CAC6-4431-9736-E02E935B9FAB</string>
 </dict>

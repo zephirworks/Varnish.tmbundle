@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>backend ${1:default} {
+	.host = "${2:127.0.0.1}";
+	.port = "80";
+}</string>
+	<key>name</key>
+	<string>backend</string>
+	<key>tabTrigger</key>
+	<string>backend</string>
+	<key>uuid</key>
+	<string>86DA3050-7CC5-4A31-8FE8-5454136D0DEA</string>
+</dict>
+</plist>
