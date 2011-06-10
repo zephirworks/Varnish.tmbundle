@@ -30,6 +30,10 @@
 		</dict>
 		<dict>
 			<key>include</key>
+			<string>#keyword-import</string>
+		</dict>
+		<dict>
+			<key>include</key>
 			<string>#keyword-sub</string>
 		</dict>
 		<dict>
@@ -265,6 +269,26 @@
 				</dict>
 			</array>
 		</dict>
+		<key>keyword-import</key>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.control.backend.vcl</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>entity.name.backend.vcl</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>\b(import)\s+([a-zA-Z0-9_]+)</string>
+			<key>name</key>
+			<string>meta.import.vcl</string>
+		</dict>
 		<key>keyword-sub</key>
 		<dict>
 			<key>patterns</key>
@@ -305,7 +329,7 @@
 			<array>
 				<dict>
 					<key>match</key>
-					<string>\b(director|probe|import)\b</string>
+					<string>\b(director|probe)\b</string>
 					<key>name</key>
 					<string>keyword.other.vcl</string>
 				</dict>
